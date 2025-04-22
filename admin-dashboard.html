@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Extoll.Co</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <h2>Extoll.Co Admin</h2>
+            </div>
+            <nav class="admin-nav">
+                <ul>
+                    <li class="active">
+                        <a href="#dashboard">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#users">
+                            <i class="fas fa-users"></i>
+                            Users
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#projects">
+                            <i class="fas fa-project-diagram"></i>
+                            Projects
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#messages">
+                            <i class="fas fa-envelope"></i>
+                            Messages
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#analytics">
+                            <i class="fas fa-chart-line"></i>
+                            Analytics
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#settings">
+                            <i class="fas fa-cog"></i>
+                            Settings
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="admin-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="admin-user">
+                    <span class="admin-email">extoll.co.in@gmail.com</span>
+                    <button id="logoutBtn" class="btn secondary-btn">Logout</button>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <section id="dashboard" class="admin-section">
+                    <h2>Dashboard Overview</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Total Users</h3>
+                                <p class="stat-number">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Active Projects</h3>
+                                <p class="stat-number">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>New Messages</h3>
+                                <p class="stat-number">0</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Tasks</h3>
+                                <p class="stat-number">0</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recent-activity">
+                        <h3>Recent Activity</h3>
+                        <div class="activity-list">
+                            <!-- Activity items will be populated dynamically -->
+                        </div>
+                    </div>
+                </section>
+
+                <section id="projects" class="admin-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>Projects</h2>
+                        <a href="add-project.html" class="btn primary-btn" id="addProjectBtn">
+                            <i class="fas fa-plus"></i> Add New Project
+                        </a>
+                    </div>
+
+                    <div class="project-form" style="display: none;">
+                        <form id="projectForm">
+                            <div class="form-group">
+                                <label for="projectName">Project Name</label>
+                                <input type="text" id="projectName" name="projectName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="projectCategory">Category</label>
+                                <select id="projectCategory" name="projectCategory" required>
+                                    <option value="">Select Category</option>
+                                    <option value="web-development">Web Development</option>
+                                    <option value="mobile-apps">Mobile Apps</option>
+                                    <option value="ui-ux">UI/UX Design</option>
+                                    <option value="digital-marketing">Digital Marketing</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="projectDescription">Description</label>
+                                <textarea id="projectDescription" name="projectDescription" rows="4" required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="projectLink">Project Link (Optional)</label>
+                                <input type="url" id="projectLink" name="projectLink" placeholder="https://">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="projectFiles">Attach Work Files</label>
+                                <div class="file-upload">
+                                    <input type="file" id="projectFiles" name="projectFiles" multiple accept=".pdf,.doc,.docx,.zip,.rar">
+                                    <div class="file-upload-text">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <span>Click to upload or drag and drop</span>
+                                        <small>PDF, DOC, ZIP, RAR (Max 10MB)</small>
+                                    </div>
+                                </div>
+                                <div id="fileList" class="file-list"></div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn secondary-btn" id="cancelProjectBtn">Cancel</button>
+                                <button type="submit" class="btn primary-btn">Post Project</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="projects-grid">
+                        <!-- Projects will be displayed here -->
+                    </div>
+                </section>
+
+                <section id="messages" class="admin-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>Messages</h2>
+                        <div class="message-filters">
+                            <button class="btn secondary-btn active" data-filter="all">All</button>
+                            <button class="btn secondary-btn" data-filter="unread">Unread</button>
+                            <button class="btn secondary-btn" data-filter="read">Read</button>
+                        </div>
+                    </div>
+
+                    <div class="messages-list">
+                        <!-- Messages will be populated dynamically -->
+                    </div>
+                </section>
+
+                <section id="users" class="admin-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>User Management</h2>
+                    </div>
+
+                    <div class="user-filters">
+                        <button class="btn filter-btn active" data-filter="all">All Users</button>
+                        <button class="btn filter-btn" data-filter="active-projects">Active Projects</button>
+                        <button class="btn filter-btn" data-filter="pending-projects">Pending Projects</button>
+                        <button class="btn filter-btn" data-filter="completed-projects">Completed Projects</button>
+                        <div class="user-search">
+                            <input type="text" id="userSearch" placeholder="Search users...">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+
+                    <div class="users-grid">
+                        <!-- Users will be displayed here -->
+                    </div>
+                </section>
+
+                <section id="settings" class="admin-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>Settings</h2>
+                        <button class="btn primary-btn" id="saveSettingsBtn">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </div>
+
+                    <div class="settings-grid">
+                        <div class="settings-card">
+                            <h3>General Settings</h3>
+                            <div class="form-group">
+                                <label for="siteName">Site Name</label>
+                                <input type="text" id="siteName" value="Extoll.Co Admin">
+                            </div>
+                            <div class="form-group">
+                                <label for="siteDescription">Site Description</label>
+                                <textarea id="siteDescription" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="timezone">Timezone</label>
+                                <select id="timezone">
+                                    <option value="UTC">UTC</option>
+                                    <option value="IST">IST</option>
+                                    <option value="EST">EST</option>
+                                    <option value="PST">PST</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>Email Settings</h3>
+                            <div class="form-group">
+                                <label for="smtpHost">SMTP Host</label>
+                                <input type="text" id="smtpHost">
+                            </div>
+                            <div class="form-group">
+                                <label for="smtpPort">SMTP Port</label>
+                                <input type="number" id="smtpPort">
+                            </div>
+                            <div class="form-group">
+                                <label for="smtpUser">SMTP Username</label>
+                                <input type="text" id="smtpUser">
+                            </div>
+                            <div class="form-group">
+                                <label for="smtpPass">SMTP Password</label>
+                                <input type="password" id="smtpPass">
+                            </div>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>Security Settings</h3>
+                            <div class="form-group">
+                                <label class="switch-label">
+                                    <span>Two-Factor Authentication</span>
+                                    <div class="switch">
+                                        <input type="checkbox" id="twoFactorAuth">
+                                        <span class="slider"></span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="switch-label">
+                                    <span>Force Strong Passwords</span>
+                                    <div class="switch">
+                                        <input type="checkbox" id="strongPasswords" checked>
+                                        <span class="slider"></span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label for="sessionTimeout">Session Timeout (minutes)</label>
+                                <input type="number" id="sessionTimeout" value="30">
+                            </div>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>Appearance</h3>
+                            <div class="form-group">
+                                <label for="theme">Theme</label>
+                                <select id="theme">
+                                    <option value="light">Light</option>
+                                    <option value="dark">Dark</option>
+                                    <option value="auto">Auto</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="accentColor">Accent Color</label>
+                                <input type="color" id="accentColor" value="#3498db">
+                            </div>
+                            <div class="form-group">
+                                <label class="switch-label">
+                                    <span>Show Animations</span>
+                                    <div class="switch">
+                                        <input type="checkbox" id="showAnimations" checked>
+                                        <span class="slider"></span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="analytics" class="admin-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>Analytics Overview</h2>
+                        <div class="date-range">
+                            <select id="analyticsRange">
+                                <option value="7">Last 7 Days</option>
+                                <option value="30">Last 30 Days</option>
+                                <option value="90">Last 90 Days</option>
+                                <option value="365">Last Year</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="analytics-grid">
+                        <div class="analytics-card">
+                            <h3>User Growth</h3>
+                            <div class="chart-container">
+                                <canvas id="userGrowthChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card">
+                            <h3>Project Distribution</h3>
+                            <div class="chart-container">
+                                <canvas id="projectDistributionChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card">
+                            <h3>Message Activity</h3>
+                            <div class="chart-container">
+                                <canvas id="messageActivityChart"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="analytics-card">
+                            <h3>User Engagement</h3>
+                            <div class="chart-container">
+                                <canvas id="userEngagementChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-details">
+                        <div class="analytics-table">
+                            <h3>Detailed Statistics</h3>
+                            <table id="analyticsTable">
+                                <thead>
+                                    <tr>
+                                        <th>Metric</th>
+                                        <th>Current</th>
+                                        <th>Previous</th>
+                                        <th>Change</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Will be populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html> 

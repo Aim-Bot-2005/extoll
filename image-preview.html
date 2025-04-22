@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EXTOLL - High-Quality Images Preview</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 30px;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #7e22ce;
+        }
+        h2 {
+            margin-top: 50px;
+            border-bottom: 2px solid #7e22ce;
+            padding-bottom: 10px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .image-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        .image-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .image-info {
+            padding: 15px;
+        }
+        .image-info h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .testimonial-card {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .featured-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .featured-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        .featured-info {
+            padding: 20px;
+        }
+        .hero-image {
+            height: 400px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>EXTOLL - High-Quality Images Preview</h1>
+        
+        <h2>Hero Image</h2>
+        <img class="hero-image" src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=2300&auto=format&fit=crop" alt="Digital Solutions Hero">
+        
+        <h2>Portfolio Images</h2>
+        <div class="image-grid">
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1523381294911-8d3cead13475?q=80&w=1000&auto=format&fit=crop" alt="E-commerce Website">
+                <div class="image-info">
+                    <h3>Luxury E-commerce Platform</h3>
+                    <p>Web Development</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1?q=80&w=1000&auto=format&fit=crop" alt="Fitness App">
+                <div class="image-info">
+                    <h3>Health Tracking Application</h3>
+                    <p>Mobile Development</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1634084462412-b54873c0a56d?q=80&w=1000&auto=format&fit=crop" alt="Brand Identity">
+                <div class="image-info">
+                    <h3>Corporate Brand Identity</h3>
+                    <p>UI/UX Design</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=1000&auto=format&fit=crop" alt="AI Algorithm">
+                <div class="image-info">
+                    <h3>Machine Learning Image Recognition</h3>
+                    <p>Python Development</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1000&auto=format&fit=crop" alt="Financial Dashboard">
+                <div class="image-info">
+                    <h3>Financial Analytics Dashboard</h3>
+                    <p>Web Development</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1639762681057-408e52192e55?q=80&w=1000&auto=format&fit=crop" alt="Blockchain App">
+                <div class="image-info">
+                    <h3>Decentralized Finance Platform</h3>
+                    <p>Blockchain Development</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1000&auto=format&fit=crop" alt="Food Delivery App">
+                <div class="image-info">
+                    <h3>On-Demand Food Service</h3>
+                    <p>Mobile Development</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1000&auto=format&fit=crop" alt="Product Design">
+                <div class="image-info">
+                    <h3>Product Launch Campaign</h3>
+                    <p>UI/UX Design</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1533750349088-cd871a92f312?q=80&w=1000&auto=format&fit=crop" alt="API Integration">
+                <div class="image-info">
+                    <h3>Enterprise API Integration System</h3>
+                    <p>Backend Development</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?q=80&w=1000&auto=format&fit=crop" alt="Mobile UI Kit">
+                <div class="image-info">
+                    <h3>Premium Mobile UI Component Library</h3>
+                    <p>UI/UX Design</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1543286386-713bdd548da4?q=80&w=1000&auto=format&fit=crop" alt="Data Visualization">
+                <div class="image-info">
+                    <h3>Interactive Data Visualization Tool</h3>
+                    <p>JavaScript Development</p>
+                </div>
+            </div>
+            <div class="image-card">
+                <img src="https://images.unsplash.com/photo-1599507593548-0187ac4043c6?q=80&w=1000&auto=format&fit=crop" alt="SaaS Platform">
+                <div class="image-info">
+                    <h3>Subscription-based SaaS Platform</h3>
+                    <p>Full-stack Development</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Featured Project Images</h2>
+        <div class="featured-grid">
+            <div class="featured-card">
+                <img src="https://images.unsplash.com/photo-1595252129375-05b7f1b3a9f1?q=80&w=1500&auto=format&fit=crop" alt="Machine Learning Project">
+                <div class="featured-info">
+                    <h3>AI-Powered Image Recognition System</h3>
+                    <p>An advanced machine learning system designed to recognize and categorize objects in images with over 98% accuracy. This project leverages state-of-the-art deep learning techniques including convolutional neural networks (CNNs) and transfer learning.</p>
+                </div>
+            </div>
+            <div class="featured-card">
+                <img src="https://images.unsplash.com/photo-1602265585142-6b221b9b2c24?q=80&w=1500&auto=format&fit=crop" alt="UI Component Library">
+                <div class="featured-info">
+                    <h3>Premium Mobile UI Component Library</h3>
+                    <p>A comprehensive design system featuring over 200 meticulously crafted UI components for modern mobile applications. This library enables designers and developers to create consistent, accessible, and visually appealing interfaces efficiently.</p>
+                </div>
+            </div>
+            <div class="featured-card">
+                <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?q=80&w=1500&auto=format&fit=crop" alt="Blockchain DeFi Platform">
+                <div class="featured-info">
+                    <h3>Decentralized Finance (DeFi) Platform</h3>
+                    <p>A secure and innovative decentralized finance platform that enables users to lend, borrow, and earn interest on their digital assets without intermediaries. Built on the Ethereum blockchain, this solution provides transparency and security while eliminating traditional financial barriers.</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Testimonial Client Images</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" alt="Sarah Johnson">
+                <div>
+                    <h3>Sarah Johnson</h3>
+                    <p>CEO, TechInnovate</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop" alt="Michael Chen">
+                <div>
+                    <h3>Michael Chen</h3>
+                    <p>Marketing Director, Velocity Brands</p>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop" alt="Emily Rodriguez">
+                <div>
+                    <h3>Emily Rodriguez</h3>
+                    <p>Founder, EcoStyle</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

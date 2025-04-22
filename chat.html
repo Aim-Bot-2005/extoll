@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Extoll.Co - Web Development & Digital Solutions</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://via.placeholder.com/32/7e22ce/ffffff?text=E" type="image/x-icon">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="https://via.placeholder.com/200x50/7e22ce/ffffff?text=EXTOLL" alt="Extoll Logo">
+                </a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html" class="cta-btn">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Chat Section -->
+    <section class="chat-section">
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-title">
+                    <img src="images/logo.png" alt="Extoll.Co Chat" class="chat-avatar">
+                    <div>
+                        <h2>Extoll.Co Support</h2>
+                        <p>Typically replies within minutes</p>
+                    </div>
+                </div>
+                <button class="chat-close"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <div class="chat-messages">
+                <!-- Messages will be added dynamically via JavaScript -->
+            </div>
+            
+            <div class="quick-replies">
+                <button class="quick-reply-btn">Hi</button>
+                <button class="quick-reply-btn">Services</button>
+                <button class="quick-reply-btn">Pricing</button>
+                <button class="quick-reply-btn">Contact</button>
+                <button class="quick-reply-btn">Help</button>
+            </div>
+            
+            <form class="chat-form">
+                <input type="text" id="chat-input" placeholder="Type your message here..." autocomplete="off">
+                <button type="submit" class="send-btn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Extoll.Co</h3>
+                    <p>Professional web development and digital solutions for businesses of all sizes.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html#web-development">Web Development</a></li>
+                        <li><a href="services.html#mobile-apps">Mobile Apps</a></li>
+                        <li><a href="services.html#digital-marketing">Digital Marketing</a></li>
+                        <li><a href="services.html#cloud-solutions">Cloud Solutions</a></li>
+                        <li><a href="services.html#ui-design">UI/UX Design</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Ahmedabad, Gujarat, India</p>
+                    <p><i class="fas fa-phone"></i> +91 XXXX XXXXXX</p>
+                    <p><i class="fas fa-envelope"></i> contact@extoll.co.in</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Extoll.Co. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html> 

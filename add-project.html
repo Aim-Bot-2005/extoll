@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Project - Admin Dashboard</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body class="admin-body">
+    <div class="admin-container">
+        <div class="admin-main">
+            <div class="section-header">
+                <h2>Add New Project</h2>
+                <button class="btn secondary-btn" onclick="window.history.back()">
+                    <i class="fas fa-arrow-left"></i> Back to Projects
+                </button>
+            </div>
+
+            <div class="project-form">
+                <form id="projectForm">
+                    <div class="form-group">
+                        <label for="projectName">Project Name</label>
+                        <input type="text" id="projectName" name="projectName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="projectCategory">Category</label>
+                        <select id="projectCategory" name="projectCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="mobile-apps">Mobile Apps</option>
+                            <option value="ui-ux">UI/UX Design</option>
+                            <option value="digital-marketing">Digital Marketing</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectDescription">Description</label>
+                        <textarea id="projectDescription" name="projectDescription" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectLink">Project Link (Optional)</label>
+                        <input type="url" id="projectLink" name="projectLink" placeholder="https://">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectFiles">Attach Work Files</label>
+                        <div class="file-upload">
+                            <input type="file" id="projectFiles" name="projectFiles" multiple accept=".pdf,.doc,.docx,.zip,.rar">
+                            <div class="file-upload-text">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Click to upload or drag and drop</span>
+                                <small>PDF, DOC, ZIP, RAR (Max 10MB)</small>
+                            </div>
+                        </div>
+                        <div id="fileList" class="file-list"></div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn secondary-btn" onclick="window.history.back()">Cancel</button>
+                        <button type="submit" class="btn primary-btn">Post Project</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+    <script>
+        // Initialize project form
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectForm = document.getElementById('projectForm');
+            const fileInput = document.getElementById('projectFiles');
+            const fileList = document.getElementById('fileList');
+            let selectedFiles = [];
+
+            // Handle file selection
+            if (fileInput) {
+                fileInput.addEventListener('change', function(e) {
+                    const files = Array.from(e.target.files);
+                    selectedFiles = files;
+                    updateFileList();
+                });
+
+                // Handle drag and drop
+                const fileUpload = fileInput.closest('.file-upload');
+                fileUpload.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    fileUpload.style.borderColor = '#3498db';
+                    fileUpload.style.background = '#f8f9fa';
+                });
+
+                fileUpload.addEventListener('dragleave', () => {
+                    fileUpload.style.borderColor = '#ddd';
+                    fileUpload.style.background = 'transparent';
+                });
+
+                fileUpload.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    fileUpload.style.borderColor = '#ddd';
+                    fileUpload.style.background = 'transparent';
+                    
+                    const files = Array.from(e.dataTransfer.files);
+                    selectedFiles = files;
+                    updateFileList();
+                });
+            }
+
+            function updateFileList() {
+                if (!fileList) return;
+                
+                fileList.innerHTML = '';
+                selectedFiles.forEach((file, index) => {
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    fileItem.innerHTML = `
+                        <i class="fas fa-file"></i>
+                        <span class="file-name">${file.name}</span>
+                        <span class="file-size">${formatFileSize(file.size)}</span>
+                        <i class="fas fa-times remove-file" data-index="${index}"></i>
+                    `;
+                    fileList.appendChild(fileItem);
+                });
+
+                // Add event listeners to remove buttons
+                document.querySelectorAll('.remove-file').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const index = this.getAttribute('data-index');
+                        selectedFiles.splice(index, 1);
+                        updateFileList();
+                    });
+                });
+            }
+
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            // Handle form submission
+            if (projectForm) {
+                projectForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const name = document.getElementById('projectName').value;
+                    const category = document.getElementById('projectCategory').value;
+                    const description = document.getElementById('projectDescription').value;
+                    const link = document.getElementById('projectLink').value;
+
+                    if (!name || !category || !description) {
+                        alert('Please fill in all required fields');
+                        return;
+                    }
+
+                    if (selectedFiles.length === 0) {
+                        alert('Please attach at least one file');
+                        return;
+                    }
+
+                    const project = {
+                        id: Date.now(),
+                        name,
+                        category,
+                        description,
+                        link,
+                        files: selectedFiles.map(file => ({
+                            name: file.name,
+                            size: file.size,
+                            type: file.type
+                        })),
+                        date: new Date().toISOString()
+                    };
+
+                    // Save to localStorage
+                    const projects = JSON.parse(localStorage.getItem('projects')) || [];
+                    projects.push(project);
+                    localStorage.setItem('projects', JSON.stringify(projects));
+
+                    // Redirect back to projects page
+                    window.location.href = 'admin-dashboard.html#projects';
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
